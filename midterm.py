@@ -5,6 +5,7 @@ import time
 DHTPIN = 22
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setup([23,24], GPIO.OUT)
 
 MAX_UNCHANGE_COUNT = 100
 
@@ -112,6 +113,12 @@ def main():
         if result:
             humidity, temperature = result
             print ("humidity: %s %%,  Temperature: %s C" % (humidity, temperature))
+            if (temperature > 30):
+                GPIO.output(24, GPIO.LOW)
+                GPIO.output(23, GPIO.HIGH)
+            else:
+                GPIO.output(23, GPIO.LOW)
+                GPIO.output(24, GPIO.HIGH)
         time.sleep(1)
 
 def destroy():
