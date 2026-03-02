@@ -8,7 +8,7 @@ GPIO.setmode(GPIO.BCM)
 
 def setup():
     GPIO.setup      (DO,    GPIO.IN)
-    GPIO.setup      ([23,24,  GPIO.OUT)
+    GPIO.setup      ([23,24],  GPIO.OUT)
 
 def Print(x):
     if x == 1:
@@ -26,6 +26,7 @@ def Print(x):
 
 def loop():
     status = 1
+    Print(status)
     count = 0
     while True:
 
